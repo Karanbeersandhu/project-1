@@ -1,0 +1,34 @@
+import turtle
+import random
+
+def draw_petal(t, radius):
+    t.circle(radius, 60)
+    t.left(120)
+    t.circle(radius, 60)
+    t.left(120)
+
+def draw_mandala(t, num_petals, radius):
+    for _ in range(num_petals):
+        color = random.choice(["red", "orange", "yellow", "green", "blue", "purple"])
+        t.color(color)
+        t.begin_fill()
+        draw_petal(t, radius)
+        t.end_fill()
+        t.left(360 / num_petals)
+
+screen = turtle.Screen()
+screen.bgcolor("silver")
+
+mandala_turtle = turtle.Turtle()
+mandala_turtle.speed(15)  
+mandala_turtle.width(2)
+mandala_turtle.penup()
+mandala_turtle.goto(50, 100)  
+mandala_turtle.pendown()
+
+num_petals = 72
+draw_mandala(mandala_turtle, num_petals, 170)  
+
+mandala_turtle.hideturtle()
+
+screen.mainloop()
